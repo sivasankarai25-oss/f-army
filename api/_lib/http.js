@@ -18,6 +18,23 @@ function setCors(req, res) {
 /** Wrap a handler with CORS + preflight handling + top-level crash safety. */
 function withApi(handler) {
   return async (req, res) => {
+    // Polyfill status and json methods for non-Vercel environments (e.g. Render, plain Node)
+    if (typeof res.status !== 'function') {
+      res.status = function(code) {
+        this.statusCode = code;
+        return this;
+      };
+    }
+    if (typeof res.json !== 'function') {
+      res.json = function(data) {
+        if (!this.getHeader('Content-Type')) {
+          this.setHeader('Content-Type', 'application/json; charset=utf-8');
+        }
+        this.end(JSON.stringify(data));
+        return this;
+      };
+    }
+
     setCors(req, res);
     if (req.method === 'OPTIONS') {
       res.status(204).end();

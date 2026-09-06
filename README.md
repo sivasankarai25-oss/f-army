@@ -29,7 +29,14 @@ automatically, no code changes needed.
 3. Leave all settings as default and click **Deploy**.
 4. Open the URL Vercel gives you — FARMY is live in Demo Mode.
 
-**Option B — Vercel CLI:**
+**Option B — Render (Web Service):**
+1. Push this folder to a GitHub repo.
+2. Go to [dashboard.render.com](https://dashboard.render.com), click **New +** → **Web Service**.
+3. Select your repository.
+4. Render automatically detects `render.yaml` (Build command: `npm run build`, Start command: `npm start`).
+5. Click **Deploy Web Service** — FARMY is live.
+
+**Option C — Vercel CLI:**
 ```bash
 npm i -g vercel
 cd farmy

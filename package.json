@@ -7,8 +7,10 @@
     "node": "22.x"
   },
   "scripts": {
-    "seed": "node scripts/seedCrops.js",
-    "dev": "vercel dev"
+    "build": "node -e 'console.log(\"Build success\")'",
+    "start": "node server.js",
+    "dev": "node server.js",
+    "seed": "node scripts/seedCrops.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.0"
