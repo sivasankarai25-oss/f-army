@@ -15,24 +15,24 @@
       <div class="login-hero">
         <div class="brandmark">🌾</div>
         <h1 class="brand">FARMY</h1>
-        <p class="tagline">Your smart farming companion</p>
+        <p class="tagline" data-i18n="auth.brand">Your smart farming companion</p>
       </div>
       <div class="login-card">
         <div class="backend-status-pill"></div>
         <div class="segmented">
-          <button id="segPhone" class="seg active" onclick="setLoginMethod('phone')">Phone</button>
-          <button id="segEmail" class="seg" onclick="setLoginMethod('email')">Email</button>
+          <button id="segPhone" class="seg active" onclick="setLoginMethod('phone')" data-i18n="auth.phone">Phone</button>
+          <button id="segEmail" class="seg" onclick="setLoginMethod('email')" data-i18n="auth.email">Email</button>
         </div>
 
-        <label id="contactLabel" class="fieldlabel">Phone number</label>
-        <input id="contactInput" class="textfield" type="tel" placeholder="e.g. 9876543210" value="9876543210">
+        <label id="contactLabel" class="fieldlabel" data-i18n="auth.phoneNumber">Phone number</label>
+        <input id="contactInput" class="textfield" type="tel" data-i18n-placeholder="auth.placeholderPhone" placeholder="e.g. 9876543210" value="9876543210">
 
-        <label class="fieldlabel">Your name (optional)</label>
+        <label class="fieldlabel" data-i18n="auth.nameOptional">Your name (optional)</label>
         <input id="nameInput" class="textfield" type="text" placeholder="e.g. Ravi Kumar" value="Ravi Kumar">
 
         <div id="loginBanner" class="banner"></div>
-        <button class="btn-primary big" id="sendOtpBtn" onclick="handleSendOtp()">Send OTP</button>
-        <p class="finetext">We'll send a one-time code to verify it's you. No password needed.</p>
+        <button class="btn-primary big" id="sendOtpBtn" onclick="handleSendOtp()" data-i18n="auth.sendOtp">Send OTP</button>
+        <p class="finetext" data-i18n="common.search">We'll send a one-time code to verify it's you. No password needed.</p>
       </div>
     </div>
 
@@ -59,6 +59,7 @@
   </div>
 
   <script src="js/farmy-data.js"></script>
+  <script src="js/farmy-i18n.js"></script>
   <script src="js/farmy-core.js"></script>
   <script>
     let currentMethod = 'phone';

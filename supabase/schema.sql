@@ -317,3 +317,63 @@ alter table public.pest_diseases enable row level security;
 create policy "Public can read crops" on public.crops for select using (true);
 create policy "Public can read crop requirements" on public.crop_requirements for select using (true);
 create policy "Public can read pests" on public.pest_diseases for select using (true);
+
+-- ------------------------------------------------------------
+-- QUIZ SYSTEM
+-- ------------------------------------------------------------
+create table if not exists public.quiz_sets (
+  id uuid primary key default uuid_generate_v4(),
+  quiz_number int not null unique,
+  title text not null,
+  description text,
+  difficulty text default 'Easy',
+  created_at timestamptz not null default now()
+);
+
+create table if not exists public.quiz_questions (
+  id uuid primary key default uuid_generate_v4(),
+  quiz_id uuid references public.quiz_sets(id) on delete cascade,
+  question text not null,
+  option_a text not null,
+  option_b text not null,
+  option_c text not null,
+  option_d text not null,
+  correct_answer text not null,
+  explanation text,
+  category text default 'General Knowledge',
+  difficulty text default 'Easy',
+  created_at timestamptz not null default now()
+);
+
+create table if not exists public.quiz_attempts (
+  id uuid primary key default uuid_generate_v4(),
+  user_id uuid references public.users(id) on delete cascade,
+  quiz_id uuid references public.quiz_sets(id) on delete cascade,
+  score int not null default 0,
+  correct_answers int not null default 0,
+  wrong_answers int not null default 0,
+  completed_at timestamptz not null default now()
+);
+
+create table if not exists public.quiz_user_progress (
+  id uuid primary key default uuid_generate_v4(),
+  user_id uuid references public.users(id) on delete cascade,
+  current_quiz int not null default 1,
+  completed_quizzes int not null default 0,
+  total_score int not null default 0,
+  current_streak int not null default 0,
+  longest_streak int not null default 0,
+  updated_at timestamptz not null default now()
+);
+
+create table if not exists public.quiz_leaderboard (
+  id uuid primary key default uuid_generate_v4(),
+  user_id uuid references public.users(id) on delete cascade,
+  username text,
+  score int not null default 0,
+  updated_at timestamptz not null default now()
+);
+
+create index if not exists idx_quiz_attempts_user on public.quiz_attempts(user_id, completed_at desc);
+create index if not exists idx_quiz_progress_user on public.quiz_user_progress(user_id);
+create index if not exists idx_quiz_lb_score on public.quiz_leaderboard(score desc);

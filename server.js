@@ -41,6 +41,9 @@ const API_ROUTES = [
   { pattern: /^\/api\/farms\/?$/, file: './api/farms/index.js', params: [] },
   { pattern: /^\/api\/yield\/predict\/?$/, file: './api/yield/predict.js', params: [] },
   { pattern: /^\/api\/profit\/calculate\/?$/, file: './api/profit/calculate.js', params: [] },
+  { pattern: /^\/api\/quiz\/leaderboard\/?$/, file: './api/quiz/leaderboard.js', params: [] },
+  { pattern: /^\/api\/quiz\/score\/?$/, file: './api/quiz/score.js', params: [] },
+  { pattern: /^\/api\/quiz\/progress\/?$/, file: './api/quiz/progress.js', params: [] },
   { pattern: /^\/api\/assistant\/ask\/?$/, file: './api/assistant/ask.js', params: [] }
 ];
 

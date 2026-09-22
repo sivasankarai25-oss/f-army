@@ -13,22 +13,23 @@
     <div class="screen assistant-screen">
       <div class="topbar">
         <a href="index.html" class="iconbtn">←</a>
-        <h1>Farmy Assistant 🌱</h1>
-        <button class="iconbtn" onclick="clearChat()" title="Clear conversation">🗑</button>
+        <h1 data-i18n="assistant.title">Farmy Assistant 🌱</h1>
+        <button class="iconbtn" onclick="clearChat()" data-i18n-title="assistant.clear" title="Clear conversation">🗑</button>
       </div>
 
       <div class="content assistant-body">
         <div id="chatLog" class="chatlog"></div>
 
         <div class="chatinputrow">
-          <input id="chatInput" class="textfield chatinput" placeholder="Ask about planting, water, pests, fertilizer…" onkeydown="if(event.key==='Enter')sendMessage()">
-          <button id="sendBtn" class="btn-primary sendbtn" onclick="sendMessage()">Send</button>
+          <input id="chatInput" class="textfield chatinput" data-i18n-placeholder="assistant.placeholder" placeholder="Ask about planting, water, pests, fertilizer…" onkeydown="if(event.key==='Enter')sendMessage()">
+          <button id="sendBtn" class="btn-primary sendbtn" onclick="sendMessage()" data-i18n="assistant.send">Send</button>
         </div>
       </div>
     </div>
   </div>
 
   <script src="js/farmy-data.js"></script>
+  <script src="js/farmy-i18n.js"></script>
   <script src="js/farmy-core.js"></script>
   <script>
     let isBusy = false;
@@ -94,6 +95,8 @@
         renderChat();
       }
     }
+
+    window.renderChat = renderChat;
 
     document.addEventListener('DOMContentLoaded', () => {
       renderBottomNav('assistant');

@@ -13,18 +13,19 @@
     <div class="screen">
       <div class="topbar">
         <a href="index.html" class="iconbtn">←</a>
-        <h1>My Farm Tracker</h1>
-        <a href="crops.html" class="iconbtn" title="Add Crop">+</a>
+        <h1 data-i18n="farm.title">My Farm Tracker</h1>
+        <a href="crops.html" class="iconbtn" data-i18n-title="farm.addCrop" title="Add Crop">+</a>
       </div>
 
       <div class="content">
         <div id="farmListContainer"></div>
-        <a href="crops.html" class="btn-secondary big" style="margin-top: 14px;">➕ Add Another Crop</a>
+        <a href="crops.html" class="btn-secondary big" style="margin-top: 14px;" data-i18n="farm.addAnother">➕ Add Another Crop</a>
       </div>
     </div>
   </div>
 
   <script src="js/farmy-data.js"></script>
+  <script src="js/farmy-i18n.js"></script>
   <script src="js/farmy-core.js"></script>
   <script>
     function renderFarm() {
@@ -105,6 +106,8 @@
         renderFarm();
       }
     }
+
+    window.renderFarm = renderFarm;
 
     document.addEventListener('DOMContentLoaded', () => {
       renderBottomNav('farm');

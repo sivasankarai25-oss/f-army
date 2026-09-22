@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Procurement Queue — FARMY</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/farmy.css">
+</head>
+<body>
+  <div id="appwrap">
+    <div class="screen procurement-page">
+      <div class="backend-status-pill"></div>
+      <div class="topbar">
+        <a href="index.html" class="iconbtn">←</a>
+        <h1 data-i18n="procurement.title">Procurement Queue</h1>
+        <span class="iconbtn spacer"></span>
+      </div>
+
+      <div class="procure-form">
+        <h2 id="procurementFormTitle" data-i18n="procurement.create">Create Request</h2>
+        <form id="procurementForm">
+          <div class="form-grid">
+            <div class="field full">
+              <label class="fieldlabel" data-i18n="procurement.requestId">Request ID</label>
+              <input id="requestId" class="textfield" type="text" readonly>
+            </div>
+            <div class="field">
+              <label class="fieldlabel" data-i18n="procurement.item">Item / Product</label>
+              <input id="itemName" class="textfield" type="text" placeholder="Seeds, fertilizer, spraying kit..." required>
+            </div>
+            <div class="field">
+              <label class="fieldlabel" data-i18n="procurement.quantity">Quantity</label>
+              <input id="quantity" class="textfield" type="number" min="1" step="1" required>
+            </div>
+            <div class="field">
+              <label class="fieldlabel" data-i18n="procurement.requestedBy">Requested By</label>
+              <input id="requestedBy" class="textfield" type="text" required>
+            </div>
+            <div class="field">
+              <label class="fieldlabel" data-i18n="procurement.department">Department / Category</label>
+              <input id="department" class="textfield" type="text" required>
+            </div>
+            <div class="field">
+              <label class="fieldlabel" data-i18n="procurement.priority">Priority</label>
+              <select id="priority" class="textfield" required>
+                <option value="Low" data-i18n="procurement.priorityLow">Low</option>
+                <option value="Medium" data-i18n="procurement.priorityMedium">Medium</option>
+                <option value="High" data-i18n="procurement.priorityHigh">High</option>
+                <option value="Urgent" data-i18n="procurement.priorityUrgent">Urgent</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="fieldlabel" data-i18n="procurement.date">Date</label>
+              <input id="requestDate" class="textfield" type="date" required>
+            </div>
+            <div class="field">
+              <label class="fieldlabel" data-i18n="procurement.status">Status</label>
+              <select id="status" class="textfield" required>
+                <option value="Pending" data-i18n="procurement.pending">Pending</option>
+                <option value="Processing" data-i18n="procurement.processing">Processing</option>
+                <option value="Approved" data-i18n="procurement.approved">Approved</option>
+                <option value="Rejected" data-i18n="procurement.rejected">Rejected</option>
+                <option value="Completed" data-i18n="procurement.completed">Completed</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label class="fieldlabel" data-i18n="procurement.notes">Notes</label>
+              <textarea id="notes" class="textfield" placeholder="Supplier details, delivery requirements, or remarks..."></textarea>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-primary" id="procurementSubmitBtn" data-i18n="procurement.submit">Submit Request</button>
+            <button type="button" class="btn-secondary" id="procurementResetBtn" data-i18n="procurement.reset">Reset</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="procurement-toolbar">
+        <input id="procurementSearch" class="searchbox" type="search" data-i18n-placeholder="procurement.search" placeholder="Search requests">
+        <select id="procurementStatusFilter" class="textfield">
+          <option value="" data-i18n="procurement.allStatuses">All statuses</option>
+          <option value="Pending" data-i18n="procurement.pending">Pending</option>
+          <option value="Processing" data-i18n="procurement.processing">Processing</option>
+          <option value="Approved" data-i18n="procurement.approved">Approved</option>
+          <option value="Rejected" data-i18n="procurement.rejected">Rejected</option>
+          <option value="Completed" data-i18n="procurement.completed">Completed</option>
+        </select>
+        <select id="procurementSort" class="textfield">
+          <option value="date-desc" data-i18n="procurement.sortNewest">Newest first</option>
+          <option value="date-asc" data-i18n="procurement.sortOldest">Oldest first</option>
+          <option value="priority" data-i18n="procurement.sortPriority">Priority</option>
+        </select>
+      </div>
+
+      <div class="procurement-list-head">
+        <strong id="procurementCountText">0 requests</strong>
+      </div>
+
+      <div id="procurementStatusMessage" class="loading-state" aria-live="polite"></div>
+      <div id="procurementList" class="procurement-list"></div>
+    </div>
+  </div>
+
+  <script src="js/farmy-data.js"></script>
+  <script src="js/farmy-i18n.js"></script>
+  <script src="js/farmy-core.js"></script>
+  <script src="js/farmy-procurement.js"></script>
+</body>
+</html>

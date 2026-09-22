@@ -15,21 +15,21 @@
 
       <div class="home-header">
         <div>
-          <p class="greeting">Welcome back,</p>
+          <p class="greeting" data-i18n="home.welcome">Welcome back,</p>
           <h1 id="homeFarmerName" class="farmer-name">Farmer 👋</h1>
         </div>
-        <a href="login.html" id="homeAvatar" class="avatar" title="Account / Profile">F</a>
+        <a href="login.html" id="homeAvatar" class="avatar" data-i18n-title="common.account" title="Account / Profile">F</a>
       </div>
 
       <a href="crops.html" class="searchbar">
         <span>🔍</span>
-        <span style="color: var(--ink-soft); font-size: 14.5px;">Search a crop — tomato, rice, mango…</span>
+        <span style="color: var(--ink-soft); font-size: 14.5px;" data-i18n="home.searchPlaceholder">Search a crop — tomato, rice, mango…</span>
       </a>
 
       <a href="recommend.html" class="cta-banner">
         <div>
-          <div class="cta-title">Find Suitable Crop</div>
-          <div class="cta-sub">Answer a few questions about your land</div>
+          <div class="cta-title" data-i18n="home.ctaTitle">Find Suitable Crop</div>
+          <div class="cta-sub" data-i18n="home.ctaSubtitle">Answer a few questions about your land</div>
         </div>
         <div class="cta-arrow">→</div>
       </a>
@@ -45,31 +45,33 @@
 
       <div id="homeAlertsBox"></div>
 
-      <h2 class="section-title">Recommended for Kharif season</h2>
+      <h2 class="section-title" data-i18n="home.kharif">Recommended for Kharif season</h2>
       <div id="kharifCropsScroll" class="hscroll"></div>
 
-      <h2 class="section-title">Popular crops</h2>
+      <h2 class="section-title" data-i18n="home.popular">Popular crops</h2>
       <div id="popularCropsScroll" class="hscroll"></div>
 
-      <h2 class="section-title">Quick tools</h2>
+      <a href="quiz.html" class="quiz-home-card">
+        <div class="quiz-home-card-text">
+          <div class="quiz-home-card-title" data-i18n="home.quizCardTitle">🎮 FARMY QUIZ</div>
+          <div class="quiz-home-card-sub" data-i18n="home.quizCardText">Take a quick quiz and earn points.</div>
+        </div>
+        <div class="quiz-home-card-action" data-i18n="home.quizCardAction">Play Quiz →</div>
+      </a>
+
+      <h2 class="section-title" data-i18n="home.tools">Quick tools</h2>
       <div class="quickgrid">
-        <a href="farm.html" class="quickcard">
-          <span>🚜</span>My Farm
-        </a>
-        <a href="pests.html" class="quickcard">
-          <span>🐛</span>Pest Check
-        </a>
-        <a href="soil.html" class="quickcard">
-          <span>🧪</span>Soil Check
-        </a>
-        <a href="profit.html" class="quickcard">
-          <span>💰</span>Profit Calc
-        </a>
+        <a href="farm.html" class="quickcard" data-i18n="home.quickFarm">🚜 My Farm</a>
+        <a href="procurement.html" class="quickcard" data-i18n="home.quickProcurement">🛒 Procurement</a>
+        <a href="pests.html" class="quickcard" data-i18n="home.quickPest">🐛 Pest Check</a>
+        <a href="soil.html" class="quickcard" data-i18n="home.quickSoil">🧪 Soil Check</a>
+        <a href="profit.html" class="quickcard" data-i18n="home.quickProfit">💰 Profit Calc</a>
       </div>
     </div>
   </div>
 
   <script src="js/farmy-data.js"></script>
+  <script src="js/farmy-i18n.js"></script>
   <script src="js/farmy-core.js"></script>
   <script>
     function renderHome() {
@@ -133,6 +135,8 @@
         }
       }
     }
+
+    window.renderHome = renderHome;
 
     document.addEventListener('DOMContentLoaded', () => {
       renderBottomNav('home');

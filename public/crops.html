@@ -13,22 +13,22 @@
     <div class="screen">
       <div class="topbar">
         <a href="index.html" class="iconbtn">←</a>
-        <h1>Crop Database</h1>
+        <h1 data-i18n="crops.title">Crop Database</h1>
         <span class="iconbtn spacer"></span>
       </div>
 
       <div class="content">
         <div class="searchbar">
           <span>🔍</span>
-          <input id="cropSearchInput" placeholder="Search crops (e.g. tomato, rice, wheat)…" oninput="handleSearch(this.value)">
+          <input id="cropSearchInput" data-i18n-placeholder="crops.searchPlaceholder" placeholder="Search crops (e.g. tomato, rice, wheat)…" oninput="handleSearch(this.value)">
         </div>
 
         <div class="chipgrid" style="margin-bottom: 12px;">
-          <button class="symptomchip active" onclick="filterCategory('All', this)">All</button>
-          <button class="symptomchip" onclick="filterCategory('Vegetable', this)">Vegetables</button>
-          <button class="symptomchip" onclick="filterCategory('Grain', this)">Grains</button>
-          <button class="symptomchip" onclick="filterCategory('Pulse', this)">Pulses</button>
-          <button class="symptomchip" onclick="filterCategory('Fruit', this)">Fruits</button>
+          <button class="symptomchip active" onclick="filterCategory('All', this)" data-i18n="crops.all">All</button>
+          <button class="symptomchip" onclick="filterCategory('Vegetable', this)" data-i18n="crops.vegetables">Vegetables</button>
+          <button class="symptomchip" onclick="filterCategory('Grain', this)" data-i18n="crops.grains">Grains</button>
+          <button class="symptomchip" onclick="filterCategory('Pulse', this)" data-i18n="crops.pulses">Pulses</button>
+          <button class="symptomchip" onclick="filterCategory('Fruit', this)" data-i18n="crops.fruits">Fruits</button>
         </div>
 
         <p class="hint" id="cropCountText">Showing 18 crops</p>
@@ -38,6 +38,7 @@
   </div>
 
   <script src="js/farmy-data.js"></script>
+  <script src="js/farmy-i18n.js"></script>
   <script src="js/farmy-core.js"></script>
   <script>
     let activeCategory = 'All';
@@ -86,6 +87,8 @@
       if (btn) btn.classList.add('active');
       renderCrops();
     }
+
+    window.renderCrops = renderCrops;
 
     document.addEventListener('DOMContentLoaded', () => {
       renderBottomNav('crops');

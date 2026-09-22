@@ -146,8 +146,8 @@ function updateStatusPills() {
   const pills = $$('.backend-status-pill');
   if (!pills.length) return;
   const html = FarmyState.backendOnline
-    ? `<div class="statuspill on">🟢 Connected to live backend</div>`
-    : `<div class="statuspill off">🟡 Demo mode — offline/local data ready</div>`;
+    ? `<div class="statuspill on">🟢 ${window.t ? window.t('common.liveMode') : 'Live mode'} </div>`
+    : `<div class="statuspill off">🟡 ${window.t ? window.t('common.demoMode') : 'Demo mode'} — offline/local data ready</div>`;
   pills.forEach(p => { p.innerHTML = html; });
 }
 
@@ -427,24 +427,28 @@ function renderBottomNav(activeTab = 'home') {
 
   const nav = el('nav');
   nav.id = 'bottomNav';
+  const t = (key, fallback) => (window.FARMY_I18N ? window.FARMY_I18N.t(key, fallback) : (fallback || key));
   nav.innerHTML = `
     <a href="index.html" class="navitem ${activeTab === 'home' ? 'active' : ''}">
-      <span class="navicon">🏠</span>Home
+      <span class="navicon">🏠</span>${t('nav.home', 'Home')}
     </a>
     <a href="recommend.html" class="navitem ${activeTab === 'recommend' ? 'active' : ''}">
-      <span class="navicon">🌱</span>Recommend
+      <span class="navicon">🌱</span>${t('nav.recommend', 'Recommend')}
     </a>
     <a href="farm.html" class="navitem ${activeTab === 'farm' ? 'active' : ''}">
-      <span class="navicon">🚜</span>My Farm
+      <span class="navicon">🚜</span>${t('nav.farm', 'My Farm')}
+    </a>
+    <a href="procurement.html" class="navitem ${activeTab === 'procurement' ? 'active' : ''}">
+      <span class="navicon">🛒</span>${t('nav.procurement', 'Procurement')}
     </a>
     <a href="crops.html" class="navitem ${activeTab === 'crops' ? 'active' : ''}">
-      <span class="navicon">🌾</span>Crops
+      <span class="navicon">🌾</span>${t('nav.crops', 'Crops')}
     </a>
-    <a href="soil.html" class="navitem ${activeTab === 'tools' ? 'active' : ''}">
-      <span class="navicon">🧪</span>Tools
+    <a href="quiz.html" class="navitem ${activeTab === 'quiz' ? 'active' : ''}">
+      <span class="navicon">🧠</span>${t('nav.quiz', 'Quiz')}
     </a>
     <a href="assistant.html" class="navitem ${activeTab === 'assistant' ? 'active' : ''}">
-      <span class="navicon">💬</span>Assistant
+      <span class="navicon">💬</span>${t('nav.assistant', 'Assistant')}
     </a>
   `;
   document.getElementById('appwrap').appendChild(nav);

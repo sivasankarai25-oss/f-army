@@ -13,15 +13,15 @@
     <div class="screen">
       <div class="topbar">
         <a href="index.html" class="iconbtn">←</a>
-        <h1>Find Suitable Crop</h1>
+        <h1 data-i18n="recommend.title">Find Suitable Crop</h1>
         <span class="iconbtn spacer"></span>
       </div>
 
       <div class="content">
         <div id="formSection">
-          <p class="hint">Tell us about your land and conditions — we'll match them against our agricultural crop database.</p>
+          <p class="hint" data-i18n="recommend.hint">Tell us about your land and conditions — we'll match them against our agricultural crop database.</p>
 
-          <label class="fieldlabel">Soil Type</label>
+          <label class="fieldlabel" data-i18n="recommend.soilType">Soil Type</label>
           <select id="f_soil" class="textfield">
             <option value="Loamy">Loamy</option>
             <option value="Sandy loam" selected>Sandy loam</option>
@@ -30,39 +30,40 @@
             <option value="Clay loam">Clay loam</option>
           </select>
 
-          <label class="fieldlabel">Soil pH</label>
+          <label class="fieldlabel" data-i18n="recommend.soilPh">Soil pH</label>
           <input id="f_ph" class="textfield" type="number" step="0.1" min="4.0" max="9.5" value="6.5">
 
-          <label class="fieldlabel">Average Temperature (°C)</label>
+          <label class="fieldlabel" data-i18n="recommend.temp">Average Temperature (°C)</label>
           <input id="f_temp" class="textfield" type="number" min="0" max="55" value="27">
 
-          <label class="fieldlabel">Water Availability</label>
+          <label class="fieldlabel" data-i18n="recommend.water">Water Availability</label>
           <select id="f_water" class="textfield">
             <option value="Low">Low (Rainfed / scarce)</option>
             <option value="Medium" selected>Medium (Borewell / canal)</option>
             <option value="High">High (Abundant / flood irrigated)</option>
           </select>
 
-          <label class="fieldlabel">Growing Season</label>
+          <label class="fieldlabel" data-i18n="recommend.season">Growing Season</label>
           <select id="f_season" class="textfield">
             <option value="Kharif" selected>Kharif (Monsoon / Summer)</option>
             <option value="Rabi">Rabi (Winter / Post-monsoon)</option>
             <option value="Zaid">Zaid (Dry hot summer)</option>
           </select>
 
-          <button id="recBtn" class="btn-primary big" onclick="calculateRecommendations()">Get Recommendations</button>
+          <button id="recBtn" class="btn-primary big" onclick="calculateRecommendations()" data-i18n="recommend.getRecommendations">Get Recommendations</button>
         </div>
 
         <div id="resultsSection" style="display:none;">
-          <p class="hint">Ranked by agronomic suitability for your exact farm conditions:</p>
+          <p class="hint" data-i18n="recommend.resultsHint">Ranked by agronomic suitability for your exact farm conditions:</p>
           <div id="recommendationResults" class="reslist"></div>
-          <button class="btn-secondary big" style="margin-top: 18px;" onclick="resetForm()">↻ Try Different Conditions</button>
+          <button class="btn-secondary big" style="margin-top: 18px;" onclick="resetForm()" data-i18n="recommend.tryDifferent">↻ Try Different Conditions</button>
         </div>
       </div>
     </div>
   </div>
 
   <script src="js/farmy-data.js"></script>
+  <script src="js/farmy-i18n.js"></script>
   <script src="js/farmy-core.js"></script>
   <script>
     async function calculateRecommendations() {
