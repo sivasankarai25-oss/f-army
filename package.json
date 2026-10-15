@@ -7,7 +7,7 @@
     "node": "22.x"
   },
   "scripts": {
-    "build": "node -e 'console.log(\"Build success\")'",
+    "build": "node -e 'console.log(\"No build step required: this is a static site served directly from public/\")'",
     "start": "node server.js",
     "dev": "node server.js",
     "seed": "node scripts/seedCrops.js"
